@@ -151,9 +151,9 @@ module Transbank
           self.errors << content.message if content.respond_to?(:message)
         end
 
-        # if (self.errors.blank? || signature_node.present?) && !verify
-        #   raise Exceptions::InvalidSignature.new("Invalid signature")
-        # end
+        if (self.errors.blank? || signature_node.present?) && !verify
+          raise Exceptions::InvalidSignature.new("Invalid signature")
+        end
       end
     end
   end
